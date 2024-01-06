@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Film</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+<h1>Welcome to our film schedule!</h1>
+<h2>Currently Playing Films</h2>
+<ul>
+    <li>Zjawa</li>
+    <li>Matrix</li>
+    <li>Inception</li>
+</ul>
+<form action="/all-films" method="post">
+    <label for="filmName">Enter the name of the film:</label>
+    <input type="text" id="filmName" name="filmName" required>
+    <button type="submit">Search</button>
+</form>
+<form action="/reviews" method="get">
+    <button type="submit">See the Reviews</button>
+</form>
+
+
+</body>
+</html>

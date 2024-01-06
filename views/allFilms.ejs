@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Films</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+<h1>All Film Schedules</h1>
+<div id="film-container">
+    <% schedules.forEach(function(schedule) { %>
+        <div>
+            <h2><%= schedule.filmName %></h2>
+            <ul>
+                <% schedule.schedule.forEach(function(slot) { %>
+                    <li><%= new Date(slot.date).toDateString() %>: <%= slot.times.join(', ') %></li>
+                <% }); %>
+            </ul>
+        </div>
+    <% }); %>
+</div>
+<form action="/submit-review" method="post">
+    <input type="text" name="review" placeholder="Leave a review...">
+    <button type="submit" id="submit-review">Submit Review</button>
+</form>
+<div id="reviews-container"></div> <!-- Container to display reviews -->
+
+</body>
+</html>

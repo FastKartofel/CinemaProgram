@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reviews</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+<h1>Movie Reviews</h1>
+
+<div class="review-columns">
+    <!-- Matrix Reviews -->
+    <section class="review-section">
+        <h2>Matrix</h2>
+        <div id="matrix-reviews" class="reviews">
+            <% reviews.filter(review => review.filmName === 'Matrix').forEach(review => { %>
+                <p><%= review.reviewText %></p>
+            <% }); %>
+        </div>
+        <textarea id="matrix-review-text" placeholder="Leave a review for Matrix"></textarea>
+        <button onclick="submitReview('Matrix')">Submit Review</button>
+    </section>
+
+    <!-- Zjawa Reviews -->
+    <section class="review-section">
+        <h2>Zjawa</h2>
+        <div id="zjawa-reviews" class="reviews">
+            <% reviews.filter(review => review.filmName === 'Zjawa').forEach(review => { %>
+                <p><%= review.reviewText %></p>
+            <% }); %>
+        </div>
+        <textarea id="zjawa-review-text" placeholder="Leave a review for Zjawa"></textarea>
+        <button onclick="submitReview('Zjawa')">Submit Review</button>
+    </section>
+
+    <!-- Inception Reviews -->
+    <section class="review-section">
+        <h2>Inception</h2>
+        <div id="inception-reviews" class="reviews">
+            <% reviews.filter(review => review.filmName === 'Inception').forEach(review => { %>
+                <p><%= review.reviewText %></p>
+            <% }); %>
+        </div>
+        <textarea id="inception-review-text" placeholder="Leave a review for Inception"></textarea>
+        <button onclick="submitReview('Inception')">Submit Review</button>
+    </section>
+</div>
+<script>
+    function submitReview(filmName) {
+        var reviewText = document.getElementById(filmName.toLowerCase() + '-review-text').value;
+        fetch('/reviews', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ filmName: filmName, reviewText: reviewText })
+        })
+            .then(response => response.json())
+            .then(data => {
+                var reviewsContainer = document.getElementById(filmName.toLowerCase() + '-reviews');
+                reviewsContainer.innerHTML += `<p>${data.reviewText}</p>`;
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
+</body>
+</html>

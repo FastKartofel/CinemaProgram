@@ -1,0 +1,98 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #fff;
+  background-color: #1a1a1a;
+  padding: 20px;
+}
+
+/* Container */
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* Header */
+.header {
+  background: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+/* Image Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px;
+  margin-top: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  border: 3px solid #555;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Image Caption */
+.caption {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    width: 95%;
+  }
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.text-light {
+  color: #ccc;
+}
+
+.review-columns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.review-section {
+  width: 30%; /* Adjust as needed */
+  /* Add more styles as necessary */
+}
